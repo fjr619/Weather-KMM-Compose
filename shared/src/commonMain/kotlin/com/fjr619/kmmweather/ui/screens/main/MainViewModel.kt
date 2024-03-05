@@ -120,7 +120,6 @@ class MainViewModel(
                             onEvent(MainEvent.Error)
                         }
                         is Response.Success -> {
-                            logger.i("-- sukses AAAA")
                             _state.updateForecast(result.data)
                         }
                     }

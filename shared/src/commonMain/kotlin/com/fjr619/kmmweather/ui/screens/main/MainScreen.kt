@@ -15,8 +15,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.fjr619.kmmweather.MR
 import com.fjr619.kmmweather.di.ViewModelFac
+import com.fjr619.kmmweather.ui.screens.today.TodayWeatherScreen
 import dev.icerock.moko.mvvm.compose.getViewModel
-import dev.icerock.moko.mvvm.compose.viewModelFactory
 import dev.icerock.moko.permissions.compose.BindEffect
 import dev.icerock.moko.permissions.compose.rememberPermissionsControllerFactory
 import dev.icerock.moko.resources.compose.stringResource
@@ -26,10 +26,7 @@ fun MainScreen(
     modifier: Modifier = Modifier
 ) {
     val permissionFactory = rememberPermissionsControllerFactory()
-    val viewModel = getViewModel(
-        key = "main-vm",
-        factory = ViewModelFac.getMainVmFactory(permissionFactory)
-    )
+    val viewModel = ViewModelFac.getMainViewModel(permissionFactory)
 
     val state by viewModel.state.collectAsState()
     BindEffect(viewModel.permissionsController)
@@ -44,26 +41,12 @@ fun MainScreen(
                 .padding(padding),
             color = MaterialTheme.colorScheme.background
         ) {
-
             Column {
-
-                when {
-                    state.isLoading -> {
-                        Text(text = "LOADING")
-                    }
-
-                    state.isError -> {
-                        Text(text = "ERROR")
-                    }
-
-                    state.showEmptyMessage -> {
-                        EmptyLocationMessage()
-                    }
-
-                    else -> {
-                        Text(
-                            text = "ok sukses ${state.forecast?.currentWeather?.temperatureCelsius}"
-                        )
+                if (state.showEmptyMessage) {
+                    EmptyLocationMessage()
+                } else {
+                    TodayWeatherScreen(mainUiState = state) {
+                        viewModel.onEvent(it)
                     }
                 }
             }
