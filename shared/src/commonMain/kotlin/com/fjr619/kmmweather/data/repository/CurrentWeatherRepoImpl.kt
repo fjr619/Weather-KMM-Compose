@@ -1,5 +1,6 @@
 package com.fjr619.kmmweather.data.repository
 
+import co.touchlab.kermit.Logger
 import com.fjr619.kmmweather.data.model.dto.toDomain
 import com.fjr619.kmmweather.data.remote.RemoteDataSource
 import com.fjr619.kmmweather.domain.model.AirQualityEnum
@@ -14,7 +15,8 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class CurrentWeatherRepoImpl(
-    private val remoteDataSource: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource,
+    private val logger: Logger
 ): CurrentWeatherRepo {
     override fun getCurrentWeather(
         query: String,

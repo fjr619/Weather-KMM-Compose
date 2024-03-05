@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.fjr619.kmmweather.MR
+import com.fjr619.kmmweather.di.ViewModelFac
 import dev.icerock.moko.mvvm.compose.getViewModel
 import dev.icerock.moko.mvvm.compose.viewModelFactory
 import dev.icerock.moko.permissions.compose.BindEffect
@@ -27,9 +28,7 @@ fun MainScreen(
     val permissionFactory = rememberPermissionsControllerFactory()
     val viewModel = getViewModel(
         key = "main-vm",
-        factory = viewModelFactory {
-            MainViewModel(permissionFactory.createPermissionsController())
-        }
+        factory = ViewModelFac.getMainVmFactory(permissionFactory)
     )
 
     val state by viewModel.state.collectAsState()

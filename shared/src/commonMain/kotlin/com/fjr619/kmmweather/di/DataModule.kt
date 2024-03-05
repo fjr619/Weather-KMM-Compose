@@ -11,10 +11,11 @@ import com.fjr619.kmmweather.data.remote.createHttpClient
 import org.koin.dsl.module
 
 val dataModule = module {
-    single<PreferencesDataSource> { PreferencesDataSourceImpl(get()) }
+    single<PreferencesDataSource> { PreferencesDataSourceImpl(get(), getWith("Preferences")) }
     single<LocalDataSource> { LocalDataSourceImpl(
-        database = WeatherDatabase(driver = get())
+        database = WeatherDatabase(driver = get()),
+        getWith("Local")
     ) }
     single { createHttpClient(get()) }
-    single<RemoteDataSource> { RemoteDataSourceImpl(get()) }
+    single<RemoteDataSource> { RemoteDataSourceImpl(get(), getWith("Remote")) }
 }

@@ -26,14 +26,14 @@ import org.koin.core.component.get
 
 class MainViewModel(
     val permissionsController: PermissionsController,
-): ViewModel(), KoinComponent {
 
     // ga boleh akses langsung ke data layer, harus pakai domain layer
-    private val dataStore: PreferencesDataSource = get()
+    private val dataStore: PreferencesDataSource,
 
-    private val locationService: LocationService = get()
-    private val forecastRepo: ForecastRepo = get()
-
+    private val locationService: LocationService,
+    private val forecastRepo: ForecastRepo,
+    private val logger: Logger
+): ViewModel(), KoinComponent {
     private val permissions = MutableStateFlow(PermissionsState())
     private val _state = MutableStateFlow(MainUiState())
     val state: StateFlow<MainUiState> = _state.asStateFlow()
@@ -120,6 +120,7 @@ class MainViewModel(
                             onEvent(MainEvent.Error)
                         }
                         is Response.Success -> {
+                            logger.i("-- sukses AAAA")
                             _state.updateForecast(result.data)
                         }
                     }

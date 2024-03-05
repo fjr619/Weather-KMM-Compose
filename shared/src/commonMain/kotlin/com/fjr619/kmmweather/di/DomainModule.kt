@@ -7,6 +7,6 @@ import com.fjr619.kmmweather.domain.repository.ForecastRepo
 import org.koin.dsl.module
 
 val domainModule = module {
-    factory<CurrentWeatherRepo> { CurrentWeatherRepoImpl(get()) }
-    factory<ForecastRepo> { ForecastRepoImpl(get()) }
+    factory<CurrentWeatherRepo> { CurrentWeatherRepoImpl(get(), getWith("CurrentWeatherRepo")) }
+    factory<ForecastRepo> { ForecastRepoImpl(get(), getWith("ForecastRepo")) }
 }

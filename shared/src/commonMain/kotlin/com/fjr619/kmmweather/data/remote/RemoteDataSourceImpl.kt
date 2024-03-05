@@ -1,5 +1,6 @@
 package com.fjr619.kmmweather.data.remote
 
+import co.touchlab.kermit.Logger
 import com.fjr619.kmmweather.data.model.dto.CurrentWeatherResponseDto
 import com.fjr619.kmmweather.data.model.dto.ForecastResponseDto
 import com.fjr619.kmmweather.data.model.dto.SearchResultDto
@@ -13,7 +14,8 @@ import io.ktor.client.call.body
 import io.ktor.client.plugins.resources.get
 
 class RemoteDataSourceImpl(
-    private val httpClient: HttpClient
+    private val httpClient: HttpClient,
+    private val logger: Logger
 ) : RemoteDataSource {
     override suspend fun fetchCurrentWeather(
         query: String,
