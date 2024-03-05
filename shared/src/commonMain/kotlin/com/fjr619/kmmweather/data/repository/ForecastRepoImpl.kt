@@ -34,6 +34,9 @@ class ForecastRepoImpl(
             emit(Response.Success(response.toDomain()) as Response<Forecast>)
         } catch (e: RequestException) {
             emit(Response.Error(e.message))
+        } catch (e: Exception) {
+            println("-- error ${e.message}")
+            emit(Response.Error(e.message))
         }
     }.flowOn(Dispatchers.IO)
 }

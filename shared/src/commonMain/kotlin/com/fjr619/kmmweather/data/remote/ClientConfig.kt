@@ -16,6 +16,7 @@ import io.ktor.client.plugins.resources.Resources
 import io.ktor.http.ContentType
 import io.ktor.http.URLProtocol
 import io.ktor.http.contentType
+import io.ktor.http.encodedPath
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
@@ -59,7 +60,8 @@ fun createHttpClient(httpClientEngine: HttpClientEngine) = HttpClient(httpClient
 
     defaultRequest {
         url {
-            host = "api.weatherapi.com/v1"
+            host = "api.weatherapi.com"
+            encodedPath = "/v1/"
             protocol = URLProtocol.HTTPS
             parameters.append("key", "07e8be4b8bff49d999073159242602")
             contentType(ContentType.Application.Json)
