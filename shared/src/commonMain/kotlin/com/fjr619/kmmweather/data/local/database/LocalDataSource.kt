@@ -1,6 +1,6 @@
 package com.fjr619.kmmweather.data.local.database
 
-import com.fjr619.kmmweather.data.model.LocationDao
+import com.fjr619.kmmweather.data.model.dao.LocationDao
 import kotlinx.coroutines.flow.Flow
 
 interface LocalDataSource {

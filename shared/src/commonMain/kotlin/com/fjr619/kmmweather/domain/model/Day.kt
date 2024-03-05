@@ -1,0 +1,25 @@
+package com.fjr619.kmmweather.domain.model
+
+data class Day(
+    val maxTemperatureInCelsius: Double,
+    val maxTemperatureInFahrenheit: Double,
+    val minTemperatureInCelsius: Double,
+    val minTemperatureInFahrenheit: Double,
+    val averageTemperatureInCelsius: Double,
+    val averageTemperatureInFahrenheit: Double,
+    val maxWindSpeedMph: Double,
+    val maxWindSpeedKph: Double,
+    val totalPrecipitationMm: Double,
+    val totalPrecipitationInches: Double,
+    val totalSnowCm: Double,
+    val visibilityKm: Double,
+    val visibilityMiles: Double,
+    val humidity: Double,
+    val willItRain: Int,
+    val chanceOfRain: Int,
+    val willItSnow: Int,
+    val chanceOfSnow: Int,
+    val condition: Condition,
+    val uvIndex: Double,
+    val airQuality: AirQuality?,
+)

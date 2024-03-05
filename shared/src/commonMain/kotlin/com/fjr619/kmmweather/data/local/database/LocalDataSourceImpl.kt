@@ -3,8 +3,8 @@ package com.fjr619.kmmweather.data.local.database
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
 import com.fjr619.kmmweather.WeatherDatabase
-import com.fjr619.kmmweather.data.model.LocationDao
-import com.fjr619.kmmweather.data.model.asLocationDao
+import com.fjr619.kmmweather.data.model.dao.LocationDao
+import com.fjr619.kmmweather.data.model.dao.asLocationDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.Flow

@@ -1,0 +1,28 @@
+package com.fjr619.kmmweather.domain.model
+
+data class Weather(
+    val lastUpdatedDateEpoch: Long,
+    val lastUpdatedDate: String,
+    val temperatureCelsius: Double,
+    val temperatureFahrenheit: Double,
+    val isDay: TimeOfDayEnum,
+    val weatherCondition: Condition,
+    val windSpeedMph: Double,
+    val windSpeedKph: Double,
+    val windDirectionDegrees: Double,
+    val windDirection: String,
+    val pressureMillibars: Double,
+    val pressureInches: Double,
+    val precipitationAmountMillimeters: Double,
+    val precipitationAmountInches: Double,
+    val humidityPercentage: Double,
+    val cloudCoverPercentage: Double,
+    val feelsLikeTemperatureCelsius: Double,
+    val feelsLikeTemperatureFahrenheit: Double,
+    val visibilityKm: Double,
+    val visibilityMiles: Double,
+    val uvIndex: Double,
+    val windGustMph: Double,
+    val windGustKph: Double,
+    val airQuality: AirQuality?,
+)
