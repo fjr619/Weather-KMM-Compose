@@ -1,4 +1,4 @@
-package com.fjr619.kmmweather.ui.screens.components
+package com.fjr619.kmmweather.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,7 +21,7 @@ import io.kamel.image.asyncPainterResource
 import io.ktor.http.Url
 
 @Composable
-fun TodayWeatherItem(
+fun WeatherItem(
     state: TodayWeatherUiState,
     modifier: Modifier = Modifier,
 ) {

@@ -11,11 +11,17 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.fjr619.kmmweather.MR
 import com.fjr619.kmmweather.di.ViewModelFac
-import com.fjr619.kmmweather.ui.screens.components.TodayDateItem
-import com.fjr619.kmmweather.ui.screens.components.TodayWeatherItem
+import com.fjr619.kmmweather.ui.components.HourlyWeatherItem
+import com.fjr619.kmmweather.ui.components.PrecipitationChanceItem
+import com.fjr619.kmmweather.ui.components.DateItem
+import com.fjr619.kmmweather.ui.components.DetailsItem
+import com.fjr619.kmmweather.ui.components.DividerItem
+import com.fjr619.kmmweather.ui.components.WeatherItem
 import com.fjr619.kmmweather.ui.screens.main.MainEvent
 import com.fjr619.kmmweather.ui.screens.main.MainUiState
+import dev.icerock.moko.resources.compose.stringResource
 
 @Composable
 fun TodayWeatherScreen(
@@ -60,11 +66,36 @@ fun TodayWeatherContent(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         item {
-            TodayDateItem(state.currentTime)
+            DateItem(state.currentTime)
         }
 
         item {
-            TodayWeatherItem(state)
+            WeatherItem(state)
+        }
+
+        item {
+            HourlyWeatherItem(hourlyForecasts = state.hourlyForecasts)
+        }
+
+        item {
+            PrecipitationChanceItem(
+                rainChance = stringResource(
+                    MR.strings.today_rain_chance,
+                    state.rainChance,
+                )
+            )
+        }
+
+        item {
+            DividerItem()
+        }
+
+        item {
+            DetailsItem(state)
+        }
+
+        item {
+            DividerItem()
         }
     }
 }

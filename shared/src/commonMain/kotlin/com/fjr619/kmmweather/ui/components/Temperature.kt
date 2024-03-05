@@ -1,4 +1,4 @@
-package com.fjr619.kmmweather.ui.screens.components
+package com.fjr619.kmmweather.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
