@@ -100,6 +100,7 @@ class MainViewModel(
     private fun loadForecastWithLocation() {
         viewModelScope.launch {
             val location: DeviceLocation = locationService.getCurrentLocation()
+            logger.i("$location ${location.latitude} ${location.longitude}")
             loadForecast(location.toString())
         }
     }

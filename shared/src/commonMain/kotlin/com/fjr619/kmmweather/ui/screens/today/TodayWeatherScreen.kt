@@ -18,7 +18,12 @@ import com.fjr619.kmmweather.ui.components.PrecipitationChanceItem
 import com.fjr619.kmmweather.ui.components.DateItem
 import com.fjr619.kmmweather.ui.components.DetailsItem
 import com.fjr619.kmmweather.ui.components.DividerItem
+import com.fjr619.kmmweather.ui.components.HourlyRainItem
+import com.fjr619.kmmweather.ui.components.RiseAndSetItem
+import com.fjr619.kmmweather.ui.components.TotalDailyRainVolume
 import com.fjr619.kmmweather.ui.components.WeatherItem
+import com.fjr619.kmmweather.ui.components.WindItem
+import com.fjr619.kmmweather.ui.components.WindToday
 import com.fjr619.kmmweather.ui.screens.main.MainEvent
 import com.fjr619.kmmweather.ui.screens.main.MainUiState
 import dev.icerock.moko.resources.compose.stringResource
@@ -92,6 +97,63 @@ fun TodayWeatherContent(
 
         item {
             DetailsItem(state)
+        }
+
+        item {
+            DividerItem()
+        }
+
+        item {
+            HourlyRainItem(
+                hourlyForecasts = state.hourlyForecasts,
+            )
+        }
+
+        item {
+            TotalDailyRainVolume(
+                totalPrecipitation = stringResource(
+                    MR.strings.total_precipitation_mm,
+                    state.totalPrecipitation,
+                ),
+            )
+        }
+
+        item {
+            DividerItem()
+        }
+
+        item {
+            WindItem(hourlyForecasts = state.hourlyForecasts) {
+                WindToday(todayWeatherUiState = state)
+            }
+        }
+
+        item {
+            DividerItem()
+        }
+
+        item {
+            RiseAndSetItem(
+                setTime = state.sunset,
+                riseTime = state.sunrise,
+                riseTitle = stringResource(MR.strings.sunrise),
+                setTitle = stringResource(MR.strings.sunset),
+                sectionTitle = stringResource(MR.strings.sunrise_sunset),
+            )
+        }
+
+        item {
+            DividerItem()
+        }
+
+        item {
+            RiseAndSetItem(
+                setTime = state.moonset,
+                riseTime = state.moonrise,
+                riseTitle = stringResource(MR.strings.moonrise),
+                setTitle = stringResource(MR.strings.moonset),
+                sectionTitle = stringResource(MR.strings.moonrise_moonset),
+            )
         }
 
         item {
