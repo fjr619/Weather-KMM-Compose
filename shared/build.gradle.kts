@@ -30,7 +30,7 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
-            isStatic = true
+            isStatic = false
         }
     }
     
@@ -88,6 +88,7 @@ sqldelight {
     databases {
         create("WeatherDatabase") {
             packageName.set("com.fjr619.kmmweather")
+            srcDirs.setFrom("src/commonMain/sqldelight")
         }
     }
 }
