@@ -84,6 +84,14 @@ multiplatformResources {
     resourcesPackage = "com.fjr619.kmmweather"
 }
 
+sqldelight {
+    databases {
+        create("WeatherDatabase") {
+            packageName.set("com.fjr619.kmmweather")
+        }
+    }
+}
+
 android {
     namespace = "com.fjr619.kmmweather"
     compileSdk = 34
