@@ -20,10 +20,10 @@ fun App(
         darkTheme = darkTheme,
         dynamicColor = dynamicColor,
     ) {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
+//        Surface(
+//            modifier = Modifier.fillMaxSize(),
+//            color = MaterialTheme.colorScheme.background
+//        ) {
 //            Box(
 //               modifier = Modifier.fillMaxSize(),
 //                contentAlignment = Alignment.Center
@@ -31,7 +31,7 @@ fun App(
 //                GreetingView(Greeting().greet())
 //            }
             MainScreen()
-        }
+//        }
 
     }
 }

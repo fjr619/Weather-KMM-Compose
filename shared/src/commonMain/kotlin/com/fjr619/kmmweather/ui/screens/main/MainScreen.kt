@@ -41,7 +41,9 @@ fun MainScreen(
                 .padding(padding),
             color = MaterialTheme.colorScheme.background
         ) {
-            Column {
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ) {
                 if (state.showEmptyMessage) {
                     EmptyLocationMessage()
                 } else {
