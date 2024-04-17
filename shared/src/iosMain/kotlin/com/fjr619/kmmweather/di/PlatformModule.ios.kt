@@ -10,6 +10,10 @@ import com.fjr619.kmmweather.domain.location.LocationService
 import io.ktor.client.engine.darwin.Darwin
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import org.koin.core.definition.Definition
+import org.koin.core.definition.KoinDefinition
+import org.koin.core.qualifier.Qualifier
 
 actual fun platformModule(): Module = module {
     single<DataStoreProvider> { DataStoreProviderImpl() }
@@ -20,3 +24,7 @@ actual fun platformModule(): Module = module {
     factory<LocationService> { IosLocationService() }
 }
 
+actual inline fun <reified T : ViewModel> Module.viewModelDefinition(
+    qualifier: Qualifier?,
+    noinline definition: Definition<T>,
+): KoinDefinition<T> = factory(qualifier = qualifier, definition = definition)
