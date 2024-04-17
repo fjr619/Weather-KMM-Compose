@@ -11,29 +11,29 @@ import org.koin.core.component.get
 
 object ViewModelFac : KoinComponent {
 
-    @Composable
-    fun getMainViewModel(permissionFactory: PermissionsControllerFactory) =
-        getViewModel(
-            key = "main-vm",
-            factory = viewModelFactory {
-                MainViewModel(
-                    permissionsController = permissionFactory.createPermissionsController(),
-                    dataStore = get(),
-                    locationService = get(),
-                    forecastRepo = get(),
-                    logger = getWith("MainViewModel"),
-                )
-            }
-        )
+//    @Composable
+//    fun getMainViewModel(permissionFactory: PermissionsControllerFactory) =
+//        getViewModel(
+//            key = "main-vm",
+//            factory = viewModelFactory {
+//                MainViewModel(
+//                    permissionsController = permissionFactory.createPermissionsController(),
+//                    dataStore = get(),
+//                    locationService = get(),
+//                    forecastRepo = get(),
+//                    logger = getWith("MainViewModel"),
+//                )
+//            }
+//        )
 
-    @Composable
-    fun getTodayWeatherViewModel() =
-        getViewModel(
-            key = "today-vm",
-            factory = viewModelFactory {
-                TodayWeatherViewModel(
-                    logger = getWith("TodayWeatherViewModel")
-                )
-            }
-        )
+//    @Composable
+//    fun getTodayWeatherViewModel() =
+//        getViewModel(
+//            key = "today-vm",
+//            factory = viewModelFactory {
+//                TodayWeatherViewModel(
+//                    logger = getWith("TodayWeatherViewModel")
+//                )
+//            }
+//        )
 }

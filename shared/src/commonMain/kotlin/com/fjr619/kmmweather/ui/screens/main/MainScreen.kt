@@ -20,13 +20,19 @@ import dev.icerock.moko.mvvm.compose.getViewModel
 import dev.icerock.moko.permissions.compose.BindEffect
 import dev.icerock.moko.permissions.compose.rememberPermissionsControllerFactory
 import dev.icerock.moko.resources.compose.stringResource
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier
 ) {
     val permissionFactory = rememberPermissionsControllerFactory()
-    val viewModel = ViewModelFac.getMainViewModel(permissionFactory)
+    val viewModel: MainViewModel = koinInject(
+        parameters = {
+            parametersOf(permissionFactory.createPermissionsController())
+        }
+    )
 
     val state by viewModel.state.collectAsState()
     BindEffect(viewModel.permissionsController)

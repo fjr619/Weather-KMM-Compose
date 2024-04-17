@@ -20,7 +20,8 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) = startKoin {
         platformModule(),
         dataModule,
         domainModule,
-        loggerModule
+        loggerModule,
+        viewModelModule
     )
 }
 

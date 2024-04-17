@@ -27,6 +27,7 @@ import com.fjr619.kmmweather.ui.components.WindToday
 import com.fjr619.kmmweather.ui.screens.main.MainEvent
 import com.fjr619.kmmweather.ui.screens.main.MainUiState
 import dev.icerock.moko.resources.compose.stringResource
+import org.koin.compose.koinInject
 
 @Composable
 fun TodayWeatherScreen(
@@ -34,7 +35,7 @@ fun TodayWeatherScreen(
     mainUiState: MainUiState,
     updateMainUiState: (MainEvent) -> Unit
 ) {
-    val viewModel = ViewModelFac.getTodayWeatherViewModel()
+    val viewModel: TodayWeatherViewModel = koinInject()
 
     LaunchedEffect(mainUiState.forecast) {
         mainUiState.forecast?.let {
